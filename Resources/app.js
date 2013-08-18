@@ -21,11 +21,14 @@ var win1 = Ti.UI.createWindow({
 });
 
 Ti.API.info('Registering background services');
+var dateTime = new Date(new Date().getTime() + 30000);
+console.log("time is "+dateTime.toTimeString());
+
 //var service = Ti.App.iOS.registerBackgroundService({url:'bg-service1.js'});
 //var service2 = Ti.App.iOS.registerBackgroundService({url:'bg-service2.js'});
 var curNotif = Ti.App.iOS.scheduleLocalNotification({
-    alertBody:'This is an alert',
-    date:new Date(new Date().getTime() + 10000) // 1 second after pause
+    alertBody:'This is an alert @time' + dateTime.toDateString() + " " + dateTime.toTimeString(),
+    date:dateTime // 1 second after pause
   }); 
 Ti.API.info('*** Press home button to pause application ***');
 
